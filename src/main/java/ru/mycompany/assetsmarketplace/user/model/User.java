@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+
 
 import java.util.Date;
 
@@ -38,10 +38,10 @@ public class User {
     @Column(name = "sex")
     private String sex;
 
-    @Column(name = "about")
+    @Column(name = "about", columnDefinition = "text")
     private String about;
 
-    @Column(name = "is_seller")
+    @Column(name = "is_seller", columnDefinition = "boolean default false")
     private boolean isSeller;
 
     @Size(max = 255)
@@ -56,7 +56,7 @@ public class User {
     @Column(name = "patronymic")
     private String patronymic;
 
-    @Column(name = "is_confirmed")
+    @Column(name = "is_confirmed", columnDefinition = "boolean default false")
     private boolean isConfirmed;
 
     @Size(max = 255)
@@ -67,10 +67,10 @@ public class User {
     @Column(name = "language")
     private String language;
 
-    @Column(name = "is_mailling")
+    @Column(name = "is_mailling", columnDefinition = "boolean default false")
     private boolean isMailing;
 
-    @Size(max = 255)
+    @Size(max = 16)
     @Column(name = "password")
     private String password;
 }

@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.mycompany.assetsmarketplace.exceptions.EmailException;
 import ru.mycompany.assetsmarketplace.exceptions.NotFoundException;
 import ru.mycompany.assetsmarketplace.exceptions.ValidateException;
 import ru.mycompany.assetsmarketplace.user.dto.UserDto;
@@ -36,6 +35,7 @@ public class UserServiceImplements implements UserService {
 
     @Override
     public UserDto getById(long id) {
+        log.debug("Request GET to /users/{}",id);
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("User with id = " + id + " is not found"));
         return userMapper.toDto(user);
@@ -44,6 +44,7 @@ public class UserServiceImplements implements UserService {
     @Override
     @Transactional
     public UserDto create(UserDto userDto) {
+        log.debug("Request POST to /users");
         validate(userDto);
         return userMapper.toDto(userRepository.save(userMapper.fromDto(userDto)));
 
@@ -79,10 +80,6 @@ public class UserServiceImplements implements UserService {
             throw new ValidateException("Email cannot be empty.");
         if (userDto.getEmail().isBlank() || !userDto.getEmail().contains("@"))
             throw new ValidateException("Incorrect email: " + userDto.getEmail() + ".");
-        User existingUser = userRepository.findByEmail(userDto.getEmail());
-        if (existingUser != null) {
-            throw new EmailException("User with email: " + userDto.getEmail() + " already exists.");
-        }
     }
 
     private void copyProperties(UserDto userDto, User user) {
