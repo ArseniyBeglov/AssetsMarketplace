@@ -98,8 +98,8 @@ public class UserServiceImplements implements UserService {
         if (userDto.getAbout() != null) {
             user.setAbout(userDto.getAbout());
         }
-        if (userDto.isSeller() != user.isSeller()) {
-            user.setSeller(userDto.isSeller());
+        if (userDto.getIsSeller() != user.getIsSeller()) {
+            user.setIsSeller(userDto.getIsSeller());
         }
         if (userDto.getSurname() != null) {
             user.setSurname(userDto.getSurname());
@@ -110,8 +110,8 @@ public class UserServiceImplements implements UserService {
         if (userDto.getPatronymic() != null) {
             user.setPatronymic(userDto.getPatronymic());
         }
-        if (userDto.isConfirmed() != user.isConfirmed()) {
-            user.setConfirmed(userDto.isConfirmed());
+        if (userDto.getIsConfirmed() != user.getIsConfirmed()) {
+            user.setIsConfirmed(userDto.getIsConfirmed());
         }
         if (userDto.getConfirmToken() != null) {
             user.setConfirmToken(userDto.getConfirmToken());
@@ -119,8 +119,8 @@ public class UserServiceImplements implements UserService {
         if (userDto.getLanguage() != null) {
             user.setLanguage(userDto.getLanguage());
         }
-        if (userDto.isMailing() != user.isMailing()) {
-            user.setMailing(userDto.isMailing());
+        if (userDto.getIsMailing() != user.getIsMailing()) {
+            user.setIsMailing(userDto.getIsMailing());
         }
         if (userDto.getPassword() != null) {
             user.setPassword(userDto.getPassword());

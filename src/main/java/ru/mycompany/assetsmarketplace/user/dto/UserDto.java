@@ -11,41 +11,20 @@ import java.util.Date;
 @AllArgsConstructor
 public class UserDto {
     private Long id;
-
-    @Size(max = 255)
     private String password;
-
     @Email
     private String email;
-
-    @Size(max = 255)
     private String nickname;
-
     private Date birthday;
-
-    @Size(max = 10)
     private String sex;
-
     private String about;
-
-    private boolean isSeller;
-
-    @Size(max = 255)
+    private Boolean isSeller;
     private String surname;
-
-    @Size(max = 255)
     private String name;
-
-    @Size(max = 255)
     private String patronymic;
-
-    private boolean isConfirmed;
-
-    @Size(max = 255)
+    private Boolean isConfirmed;
     private String confirmToken;
-
-    @Size(max = 255)
     private String language;
-
-    private boolean isMailing;
+    private Boolean isMailing;
+    private Boolean isActive;
 }

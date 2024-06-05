@@ -1,13 +1,14 @@
 package ru.mycompany.assetsmarketplace.user.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import ru.mycompany.assetsmarketplace.user.enums.Role;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -22,7 +23,6 @@ public class User {
     @Column(name = "id")
     private Long id;
 
-    @Size(max = 255)
     @Column(name = "nickname")
     private String nickname;
 
@@ -34,43 +34,45 @@ public class User {
     @Temporal(TemporalType.DATE)
     private Date birthday;
 
-    @Size(max = 10)
     @Column(name = "sex")
     private String sex;
 
-    @Column(name = "about", columnDefinition = "text")
+    @Column(name = "about")
     private String about;
 
-    @Column(name = "is_seller", columnDefinition = "boolean default false")
-    private boolean isSeller;
+    @Column(name = "is_seller")
+    private Boolean isSeller;
 
-    @Size(max = 255)
     @Column(name = "surname")
     private String surname;
 
-    @Size(max = 255)
     @Column(name = "name")
     private String name;
 
-    @Size(max = 255)
     @Column(name = "patronymic")
     private String patronymic;
 
-    @Column(name = "is_confirmed", columnDefinition = "boolean default false")
-    private boolean isConfirmed;
+    @Column(name = "is_confirmed")
+    private Boolean isConfirmed;
 
-    @Size(max = 255)
     @Column(name = "confirm_token")
     private String confirmToken;
 
-    @Size(max = 255)
     @Column(name = "language")
     private String language;
 
-    @Column(name = "is_mailling", columnDefinition = "boolean default false")
-    private boolean isMailing;
+    @Column(name = "is_mailling")
+    private Boolean isMailing;
 
-    @Size(max = 16)
-    @Column(name = "password")
+    @Column(name = "password", length = 1000)
     private String password;
+
+    @Column(name="is_active")
+    private Boolean isActive;
+
+//    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+//    @CollectionTable(name = "user_role",
+//    joinColumns = @JoinColumn(name = "user_id"))
+//    @Enumerated(EnumType.STRING)
+//    private Set<Role> roles = new HashSet<>();
 }

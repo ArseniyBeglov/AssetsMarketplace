@@ -55,18 +55,23 @@ public class Asset {
     @Column(name = "platform")
     private String platform;
 
-    @Column(name = "publication_date", nullable = false)
-    private final LocalDateTime publicationDate = LocalDateTime.now() ;
+    @Column(name = "publication_date")
+    private LocalDateTime publicationDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id", nullable = false)
     private User author;
 
     @Column(name = "tags", columnDefinition = "text")
+    // TODO another table for tags
     private String tags;
 
     @Column(name = "tech_details", columnDefinition = "text")
     private String techDetails;
 
+    @PrePersist
+    private void init(){
+        publicationDate=LocalDateTime.now();
+    }
 }
 

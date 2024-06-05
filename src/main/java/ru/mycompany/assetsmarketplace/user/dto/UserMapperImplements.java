@@ -14,14 +14,15 @@ public class UserMapperImplements implements UserMapper{
                 user.getBirthday(),
                 user.getSex(),
                 user.getAbout(),
-                user.isSeller(),
+                user.getIsSeller(),
                 user.getSurname(),
                 user.getName(),
                 user.getPatronymic(),
-                user.isConfirmed(),
+                user.getIsConfirmed(),
                 user.getConfirmToken(),
                 user.getLanguage(),
-                user.isMailing()
+                user.getIsMailing(),
+                user.getIsActive()
         );
     }
 
@@ -34,15 +35,16 @@ public class UserMapperImplements implements UserMapper{
                 userDto.getBirthday(),
                 userDto.getSex(),
                 userDto.getAbout(),
-                userDto.isSeller(),
+                userDto.getIsSeller(),
                 userDto.getSurname(),
                 userDto.getName(),
                 userDto.getPatronymic(),
-                userDto.isConfirmed(),
+                userDto.getIsConfirmed(),
                 userDto.getConfirmToken(),
                 userDto.getLanguage(),
-                userDto.isMailing(),
-                userDto.getPassword()
+                userDto.getIsMailing(),
+                userDto.getPassword(),
+                userDto.getIsActive()
         );
     }
 }
